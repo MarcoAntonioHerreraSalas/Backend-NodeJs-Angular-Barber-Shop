@@ -1,11 +1,13 @@
 # Backend-NodeJs-Angular-Barber-Shop
 
 Este es el backend del aplicativo Angular Barber Shop 
-la conexión se realiza a la base de datos NoSQL MoongoDB solo es crear la conexión y en el archivo .env 
+la conexión se realiza a la base de datos NoSQL MoongoDB.
 
-# Configuración
+# Conexión
 
-colocar los siguientes datos  con su respectivo usuario contraseña y base de datos asi mismo generar un token secreto el cual se utilizara para el bearer token 
+En el archivo .env  colocar los siguientes datos  con su respectivo usuario contraseña y base de datos asi mismo generar un token secreto el cual se utilizara para el bearer token 
+
+**Estos datos se obtienen del MoongoDB al momento de crear la cuenta y generar una nueva colecíon.**
 
 `USER=`
 `PASSWORD=`
