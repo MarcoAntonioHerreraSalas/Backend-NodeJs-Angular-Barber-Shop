@@ -15,7 +15,7 @@ router.get('/services',(req,res) => {
     .find().then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
 })
 
-//get all services
+//ge service
 router.get('/service/:id',(req,res) => {
     const {id} = req.params;
     serviceModel

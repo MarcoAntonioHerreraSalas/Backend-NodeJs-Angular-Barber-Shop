@@ -30,6 +30,7 @@ const dashboadRoutes = require('./routes/dashboard');
 const userRoutes = require('./routes/user');
 const servRoutes = require('./routes/service');
 const scheduleRoutes = require('./routes/schedule');
+const appointmentRoutes = require('./routes/appointment');
 const verifyToken = require('./routes/validate-token');
 
 // route middlewares
@@ -38,6 +39,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/user',verifyToken, userRoutes); //, verifyToken
 app.use('/api/service',verifyToken, servRoutes); //, verifyToken
 app.use('/api/schedule',verifyToken, scheduleRoutes); //, verifyToken
+app.use('/api/appointment',verifyToken, appointmentRoutes); //, verifyToken
 
 
 app.get('/', (req, res) => {
