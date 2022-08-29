@@ -9,7 +9,7 @@ const schemaRegister = Joi.object({
     email: Joi.string().min(6).max(255).required().email(),
     password: Joi.string().min(6).max(1024).required(),
     avatar: Joi.string().min(6).max(1024).required(),
-    roles: Joi.array().required(),
+    role: Joi.string().required(),
     permissions: Joi.array().required()
 })
 
@@ -42,8 +42,8 @@ router.post('/register', async (req, res) => {
         email: req.body.email,
         password: password,
         avatar: req.body.avatar,
-        roles: req.body.email,
-        permissions: req.body.email
+        role: req.body.role,
+        permissions: req.body.permissions
     });
     try {
         const savedUser = await user.save();
@@ -51,6 +51,39 @@ router.post('/register', async (req, res) => {
             error: null,
             data: savedUser
         })
+    } catch (error) {
+        res.status(400).json({error})
+    }
+})
+
+
+router.put('/edit-register/:id', async (req, res) => {
+    const {id} = req.params;
+    const passwordChange = await User.findOne({ email: req.body.email });
+    if(req.body.password != ''){
+        // hash contraseña
+        const salt = await bcrypt.genSalt(10);
+         req.body.password = await bcrypt.hash(req.body.password, salt);
+    }else{
+        req.body.password = passwordChange.password;
+    }
+
+    // validate user
+    const { error } = schemaRegister.validate(req.body)
+
+    if (error) {
+        return res.status(400).json(
+            {error: error.details[0].message}
+        )
+    }
+
+
+    try {
+        const {name,email,password,avatar,role,permissions} = req.body;
+        User
+        .updateOne({_id:id},{$set:{name,email,password,avatar,role,permissions}}).
+        then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
+
     } catch (error) {
         res.status(400).json({error})
     }

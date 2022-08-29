@@ -5,6 +5,7 @@ const User = require('../models/User');
 const schemaUserByEmail = Joi.object({
     email: Joi.string().min(6).max(255).required().email(),
 })
+
 router.post('/getUserbyEmail', async (req, res) => {
     // validaciones
     const { error } = schemaUserByEmail.validate(req.body);
@@ -25,6 +26,29 @@ router.post('/getUserbyEmail', async (req, res) => {
     })
 
   
+})
+
+
+//get all users
+router.get('/users',(req,res) => {
+    User
+    .find().then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
+})
+
+//get users
+router.get('/user/:id',(req,res) => {
+    const {id} = req.params;
+    User
+    .findById(id).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
+})
+
+
+
+//delete user
+router.delete('/user/:id',(req,res) => {
+    const {id} = req.params;
+    User
+    .deleteOne({_id:id}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
 })
 
 

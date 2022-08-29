@@ -23,8 +23,8 @@ const userSchema = mongoose.Schema({
         required: true,
         minlength: 6
     },
-    roles: {
-        type: Array,
+    role: {
+        type: String,
         required: true,
     },
     permissions: {
