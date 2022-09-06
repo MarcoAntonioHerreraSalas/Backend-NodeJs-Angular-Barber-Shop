@@ -31,16 +31,19 @@ const userRoutes = require('./routes/user');
 const servRoutes = require('./routes/service');
 const scheduleRoutes = require('./routes/schedule');
 const appointmentRoutes = require('./routes/appointment');
+const productRoutes = require('./routes/product');
+const saleRoutes = require('./routes/sale');
 const verifyToken = require('./routes/validate-token');
 
 // route middlewares
 
 app.use('/api/auth', authRoutes);
-app.use('/api/user',verifyToken, userRoutes); //, verifyToken
-app.use('/api/service',verifyToken, servRoutes); //, verifyToken
-app.use('/api/schedule',verifyToken, scheduleRoutes); //, verifyToken
-app.use('/api/appointment',verifyToken, appointmentRoutes); //, verifyToken
-
+app.use('/api/user',verifyToken, userRoutes); //usuario
+app.use('/api/service',verifyToken, servRoutes); //servicios
+app.use('/api/schedule',verifyToken, scheduleRoutes); //horario
+app.use('/api/appointment',verifyToken, appointmentRoutes); //citas
+app.use('/api/product',verifyToken, productRoutes); //productos
+app.use('/api/sale',verifyToken, saleRoutes); //ventas
 
 app.get('/', (req, res) => {
     res.json({

@@ -25,6 +25,11 @@ const appointmentSchema = mongoose.Schema({
         required: true,
         minlength: 5
     },
+    id_servicio: {
+        type: String,
+        required: true,
+        minlength: 5
+    },
     start: {
         type: Date,
         required: true,
