@@ -8,7 +8,7 @@ const app = express();
 
 
 //Allow Corcs
-app.use(cors({origin: 'http://localhost:4200'}));
+app.use(cors({origin: 'https://angular-barber-shop.vercel.app/'}));
 
 
 // capturar body

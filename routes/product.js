@@ -28,7 +28,7 @@ router.get('/product/:id',(req,res) => {
 router.post('/add-product', async (req,res) => {
 
 
-    // validaciones
+   // validaciones
     const { error } = productValidation.validate(req.body);
     if (error) return res.status(400).json({ error: error.details[0].message })
     
@@ -57,9 +57,6 @@ router.delete('/product/:id',(req,res) => {
     productModel
     .deleteOne({_id:id}).then((data) =>  res.json(data)).catch((error) => res.json({message: error}))
 })
-
-
-
 
 
 module.exports = router;
