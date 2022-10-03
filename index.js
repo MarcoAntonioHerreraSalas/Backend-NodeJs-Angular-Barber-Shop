@@ -8,13 +8,8 @@ const app = express();
 
 
 //Allow Corcs
-app.use(cors({origin: '*'}));
-app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-    next();
-});
-
+const corcs = require('./corcs');
+app.use(corcs);
 
 // capturar body
 app.use(bodyparser.urlencoded({ extended: false }));
