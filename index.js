@@ -8,6 +8,7 @@ const app = express();
 
 
 //Allow Corcs
+app.use(corcs);
 app.use(cors());
 
 
@@ -34,6 +35,7 @@ const appointmentRoutes = require('./routes/appointment');
 const productRoutes = require('./routes/product');
 const saleRoutes = require('./routes/sale');
 const verifyToken = require('./routes/validate-token');
+const corcs = require('./corcs');
 
 // route middlewares
 
