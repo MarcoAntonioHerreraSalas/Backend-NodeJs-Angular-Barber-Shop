@@ -8,7 +8,6 @@ const app = express();
 
 
 //Allow Corcs
-app.use(corcs());
 app.use(cors());
 
 
