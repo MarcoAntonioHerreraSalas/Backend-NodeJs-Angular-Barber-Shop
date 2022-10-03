@@ -8,9 +8,8 @@ const app = express();
 
 
 //Allow Corcs
-const corcs = require('./corcs');
 app.use(cors());
-app.use(corcs())
+
 
 // capturar body
 app.use(bodyparser.urlencoded({ extended: false }));
